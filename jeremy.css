@@ -1,0 +1,155 @@
+/* @theme jeremy */
+
+@import "default";
+
+:root {
+  font-family: "STKaiti", serif;
+  font-size: 24px;
+  --main: #1f1f1f;
+  --secondary: #234467;
+  --code: #e96801;
+}
+
+/* 双栏 */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* 文左图右两列 p-col-right */
+section.p-col-right p:has(img) {
+  position: absolute;
+  right: 60px;
+  top: 90px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #ffffff00;
+  overflow: hidden;
+}
+
+.block {
+  position: relative;
+  border: 0.1rem dashed var(--secondary);
+  border-radius: 0.4rem;
+  padding-left: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* only apply to the first occurrence of h1 */
+h1:nth-of-type(1) {
+  font-family: "STKaiti", serif;
+  /* border-bottom: 0.05em solid var(--main); */
+  padding: 0;
+  position: absolute;
+  top: 1em;
+  left: 2em;
+  width: 90%;
+  height: 1.5em;
+  text-indent: 0em;
+}
+
+.lesshspace {
+  margin-top: -1em;
+}
+
+.morehspace {
+  margin-top: 1em;
+}
+
+code {
+  background-color: #f8f8f8;
+  color: var(--code);
+}
+
+blockquote {
+  position: relative;
+  border: 0.05rem solid var(--secondary);
+  border-radius: 0.4rem;
+  border-left: 5px solid var(--secondary);
+  padding-left: 30px; /* 增加左侧边框与文本之间的间距 */
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* box-shadow: 0 0.2rem 0.5rem #d8d8d8; */
+}
+
+blockquote::before {
+  content: "💡";
+  position: absolute;
+  top: 50%; /* 将图标垂直居中 */
+  left: 0;
+  transform: translateY(-50%); /* 垂直居中 */
+  margin-left: 5px; /* 将文字移到图标的右边 */
+}
+
+/* 高亮 */
+mark {
+  background-color: #ffee00;
+}
+
+/* formatting page numbers  */
+section::after {
+  font-size: 0.6em;
+  /* https://github.com/yhatt/marp/issues/263 */
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
+  position: absolute;
+  text-align: right;
+  bottom: 3%;
+  right: 3%;
+  width: 100%;
+  color: #1f1f1f;
+}
+
+/* inline math was too large wrt text */
+.katex {
+  font: normal 1.05em KaTeX_Main, "Times New Roman", serif;
+}
+
+/* the "center" keyword centers the image - may break, careful */
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* || SECTION CLASS: cover */
+section.fancy_background {
+  background-image: url("https://marp.app/assets/hero-background.svg") !important;
+}
+
+/* cover page - only to be used as for a single slide */
+/* <!-- _class: cover --> */
+section.cover > h1 {
+  font-size: 50px;
+  text-align: center;
+  top: 33%;
+  left: 45px;
+}
+
+/* remake this to be positioned with respect to h1 */
+section.cover > p {
+  position: relative;
+  font-size: 30px;
+  text-align: center;
+  top: 20%;
+  left: 0px;
+}
+
+/* || SECTION CLASS: tinytext */
+/* new class that makes p, ul, and blockquote text smaller */
+/* might be useful for the References slide, use <!-- _class: tinytext --> */
+section.tinytext > p,
+section.tinytext > ul,
+section.tinytext > marp-pre,
+section.tinytext > blockquote {
+  font-size: 0.65em;
+}
+
+/* || SECTION CLASS: li-compact */
+
+section.li-compact {
+  line-height: 1.2;
+}
